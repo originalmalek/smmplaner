@@ -1,0 +1,59 @@
+import vk_api
+import telebot
+import os
+import facebook
+
+from dotenv import load_dotenv
+from vk_api import VkUpload
+
+
+def post_vk(post_text, image_name, vk_token, vk_group_id):
+    vk_session = vk_api.VkApi(token=vk_token)
+    vk_methods = vk_session.get_api()
+
+    upload_photo = VkUpload(vk_session)
+    save_group_photo = upload_photo.photo_wall(photos=image_name, group_id=vk_group_id)
+
+    owner_id = save_group_photo[0]['owner_id']
+    from_group = 1
+    media_id = save_group_photo[0]['id']
+
+    vk_methods.wall.post(message=post_text, access_token=vk_token, v=5.122, group_id=vk_group_id,
+                         from_group=from_group, attachments=f'photo{owner_id}_{media_id}', owner_id=-vk_group_id)
+
+
+def post_telegram(post_text, image_name, telegram_token, telegram_group_name):
+    bot = telebot.TeleBot(telegram_token)
+
+    photo = open(image_name, 'rb')
+
+    bot.send_photo(chat_id=telegram_group_name, photo=photo, caption=post_text)
+
+
+def post_facebook(post_text, image_name, fb_access_token, fb_group_id):
+    graph = facebook.GraphAPI(access_token=fb_access_token)
+
+    photo = open(image_name, "rb").read()
+
+    graph.put_photo(image=photo, message=post_text, album_path=fb_group_id + "/photos")
+
+
+def main():
+    load_dotenv()
+    vk_token = os.getenv('VK_ACCESS_TOKEN')
+    vk_group_id = int(os.getenv('VK_GROUP_ID'))
+    fb_group_id = os.getenv('FACEBOOK_GROUP_ID')
+    fb_access_token = os.getenv('FACEBOOK_ACCESS_TOKEN')
+    telegram_token = os.getenv('TELEGRAM_TOKEN')
+    telegram_group_name = os.getenv('TELEGRAM_GROUP_NAME')
+
+    post_text = 'Hi everyone'
+    image_name = 'image.jpeg'
+
+    post_telegram(post_text, image_name, telegram_token, telegram_group_name)
+    post_vk(post_text, image_name, vk_token, vk_group_id)
+    post_facebook(post_text, image_name, fb_access_token, fb_group_id)
+
+
+if __name__ == '__main__':
+    main()
