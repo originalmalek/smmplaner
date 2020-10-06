@@ -4,13 +4,12 @@ The project makes posts to VK.com, Facebook, Telegram automatically
 
 ## Description
 The code: 
-Downloads random comic from [XKCD](https://xkcd.com/) and posts the comic to [VK.com](https://vk.com) public automatically using API.
+The project makes posts to VK.com, Facebook, Telegram automatically publics automatically using API.  
 
 * The project uses:  
-  [XKCD API](https://xkcd.com/json.html);  
-  [VK API](https://vk.com/dev).
-  [Facebook API](https://developers.facebook.com/).
-  [Telegram API](https://core.telegram.org/api).
+  [VK API](https://vk.com/dev).  
+  [Facebook API](https://developers.facebook.com/).  
+  [Telegram API](https://core.telegram.org/api).  
   
 
 ## Requirements
