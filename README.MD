@@ -1,15 +1,12 @@
-# Make one posts to VK.com, Facebook, Telegram automatically 
+# Send one posts to VK.com, Facebook, Telegram automatically 
 The project makes posts to VK.com, Facebook, Telegram automatically
 
 
 ## Description
 The code: 
-The project makes posts to VK.com, Facebook, Telegram automatically publics automatically using API.  
+The project makes posts in VK.com, Facebook, Telegram automatically publics automatically using API.  
 
-* The project uses:  
-  [VK API](https://vk.com/dev).  
-  [Facebook API](https://developers.facebook.com/).  
-  [Telegram API](https://core.telegram.org/api).  
+The project uses: [VK API](https://vk.com/dev), [Facebook API](https://developers.facebook.com/), [Telegram API](https://core.telegram.org/api).  
   
 
 ## Requirements
@@ -44,15 +41,7 @@ pip install -r requirements.txt
 Install requirements.  
 Open and run 'main.py'.
 ```
-python main.py	
-```
-
-
-## Additional information
-You have to initialize message text and image name. For it change variables post_text and image_name in **main()** function:
-```
-post_text = your_post_text
-image_name = your_image_name
+python main.py image_name post_text
 ```
 
 * How to get Access token [vk.com](https://vk.com/apps?act=manage):
