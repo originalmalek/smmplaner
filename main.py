@@ -46,7 +46,7 @@ def main():
     telegram_group_name = os.getenv('TELEGRAM_GROUP_NAME')
 
 
-    parser = argparse.ArgumentParser(description='The programm upload intent to Google DialogFlow')
+    parser = argparse.ArgumentParser(description='The programm create posts to Telegram, Vk.com, Facebook')
 
     parser.add_argument('image_name', help='Enter your image name')
     parser.add_argument('post_text', help='Enter your text')
